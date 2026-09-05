@@ -3,200 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check Student's Work — CS Professor Teaching Tools</title>
-    <meta name="description" content="Grade and review student submissions with AI-assisted grading prompts.">
+    <title>Check Student's Work — CS Teaching Tools</title>
     <script src="https://cdn.tailwindcss.com/3.4.16" integrity="sha384-mS5Uq7sE90lgbBDN8xgf34ibEgbZo4gB3tfLY40ZRle+M188BQw8onzNHg6GUZaA" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #1e458a 0%, #067e74 100%); }
-        .fade-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .field-error { border-color: #ef4444 !important; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 text-slate-800">
+<body class="min-h-screen flex flex-col bg-gray-50 text-gray-800">
 
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-2.5 group">
-                    <div class="w-9 h-9 gradient-bg rounded-lg flex items-center justify-center shadow-sm">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342"/></svg>
+    <!-- Nav -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-14">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-teal-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342"/></svg>
                     </div>
-                    <span class="font-bold text-lg text-slate-800 group-hover:text-blue-700 transition-colors hidden sm:inline">CS Teaching Tools</span>
+                    <span class="font-bold text-base text-gray-800 hidden sm:inline">CS Teaching Tools</span>
                 </a>
-                <div class="flex items-center gap-1 sm:gap-2">
-                    <a href="check-work.html" class="px-3 py-2 rounded-lg text-sm font-medium text-blue-700 bg-blue-50 transition-all">Check Work</a>
-                    <a href="create-materials.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-all">Materials</a>
-                    <a href="write-emails.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 transition-all">Emails</a>
+                <div class="flex items-center gap-1">
+                    <a href="check-work.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-blue-600 bg-blue-50 transition-colors">Check Work</a>
+                    <a href="create-materials.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-colors">Materials</a>
+                    <a href="write-emails.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-colors">Emails</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="gradient-bg text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-            <a href="index.html" class="inline-flex items-center gap-1.5 text-blue-200 hover:text-white text-sm font-medium mb-4 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
-                Back to Home
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+            <a href="index.html" class="inline-flex items-center gap-1 text-blue-200 hover:text-white text-xs font-medium mb-2 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+                Home
             </a>
-            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight fade-in">Check Student's Work</h1>
-            <p class="mt-3 text-blue-100 text-lg max-w-2xl fade-in" style="animation-delay:0.1s">Generate a structured AI grading prompt from student submission details and an optional rubric.</p>
+            <h1 class="text-xl sm:text-2xl font-bold fade-in">Check Student's Work</h1>
+            <p class="mt-1 text-blue-100 text-sm fade-in" style="animation-delay:0.05s">Generate a structured grading prompt from student submission details.</p>
         </div>
     </header>
 
-    <!-- Main Form -->
+    <!-- Form -->
     <main class="flex-1">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <form id="gradingForm" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8 space-y-6 fade-in" style="animation-delay:0.15s" onsubmit="return false;">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6">
+            <form id="gradingForm" class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 space-y-4 fade-in" style="animation-delay:0.1s" onsubmit="return false;">
 
-                <!-- Row: Student Name + Submission Type -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label for="studentName" class="block text-sm font-semibold text-slate-700 mb-1.5">Student Name / ID <span class="text-red-500">*</span></label>
-                        <input type="text" id="studentName" required placeholder="e.g., Jane Doe or ID #12345" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow">
+                        <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Student Name / ID <span class="text-red-400">*</span></label>
+                        <input type="text" id="studentName" required placeholder="e.g., Jane Doe" class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                     </div>
                     <div>
-                        <label for="submissionType" class="block text-sm font-semibold text-slate-700 mb-1.5">Submission Type <span class="text-red-500">*</span></label>
-                        <select id="submissionType" required class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow">
-                            <option value="">Select type…</option>
-                            <option value="Code Submission">Code Submission</option>
-                            <option value="Written Assignment">Written Assignment</option>
-                            <option value="Project">Project</option>
-                            <option value="Lab Report">Lab Report</option>
-                            <option value="Research Paper">Research Paper</option>
-                            <option value="Problem Set">Problem Set</option>
-                            <option value="Other">Other</option>
+                        <label for="submissionType" class="block text-sm font-medium text-gray-700 mb-1">Submission Type <span class="text-red-400">*</span></label>
+                        <select id="submissionType" required class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                            <option value="">Select type...</option>
+                            <option>Code Submission</option>
+                            <option>Written Assignment</option>
+                            <option>Project</option>
+                            <option>Lab Report</option>
+                            <option>Research Paper</option>
+                            <option>Problem Set</option>
+                            <option>Other</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Row: Course Name + Assignment Topic -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label for="courseName" class="block text-sm font-semibold text-slate-700 mb-1.5">Course Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="courseName" required placeholder="e.g., CS 301 — Data Structures" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow">
+                        <label for="courseName" class="block text-sm font-medium text-gray-700 mb-1">Course Name <span class="text-red-400">*</span></label>
+                        <input type="text" id="courseName" required placeholder="e.g., CS 301" class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                     </div>
                     <div>
-                        <label for="assignmentTopic" class="block text-sm font-semibold text-slate-700 mb-1.5">Assignment Topic <span class="text-red-500">*</span></label>
-                        <input type="text" id="assignmentTopic" required placeholder="e.g., Binary Search Tree Implementation" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow">
+                        <label for="assignmentTopic" class="block text-sm font-medium text-gray-700 mb-1">Assignment Topic <span class="text-red-400">*</span></label>
+                        <input type="text" id="assignmentTopic" required placeholder="e.g., Binary Search Tree" class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                     </div>
                 </div>
 
-                <!-- Student Submission -->
                 <div>
-                    <label for="studentWork" class="block text-sm font-semibold text-slate-700 mb-1.5">Student's Work <span class="text-red-500">*</span></label>
-                    <textarea id="studentWork" required rows="8" placeholder="Paste the student's code, written response, or describe their submission here…" class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm font-mono leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow resize-y"></textarea>
+                    <label for="studentWork" class="block text-sm font-medium text-gray-700 mb-1">Student's Work <span class="text-red-400">*</span></label>
+                    <textarea id="studentWork" required rows="6" placeholder="Paste the student's submission here..." class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm font-mono leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-y"></textarea>
                 </div>
 
-                <!-- Rubric (Optional) -->
                 <div>
-                    <label for="rubric" class="block text-sm font-semibold text-slate-700 mb-1.5">Rubric <span class="text-slate-400 font-normal">(optional)</span></label>
-                    <textarea id="rubric" rows="5" placeholder="Paste or type the grading rubric here. If left blank, a default rubric will be used." class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-shadow resize-y"></textarea>
+                    <label for="rubric" class="block text-sm font-medium text-gray-700 mb-1">Rubric <span class="text-gray-400 font-normal">(optional)</span></label>
+                    <textarea id="rubric" rows="3" placeholder="Paste grading rubric. If blank, a default rubric is used." class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-y"></textarea>
                 </div>
 
-                <!-- Generate Button -->
-                <div class="flex justify-end pt-2">
-                    <button type="button" onclick="generatePrompt()" class="inline-flex items-center gap-2 gradient-bg text-white font-semibold px-6 py-3 rounded-xl shadow-md hover:shadow-lg hover:brightness-110 active:scale-[0.98] transition-all text-sm">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
+                <div class="flex justify-end pt-1">
+                    <button type="button" id="generateBtn" onclick="generatePrompt()" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium px-5 py-2.5 rounded-lg shadow-sm transition-colors text-sm cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
                         Generate Grading Prompt
                     </button>
                 </div>
             </form>
 
-            <!-- Output Section -->
-            <div id="outputSection" class="hidden mt-8 fade-in">
-                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-lg font-bold text-slate-800">Generated Grading Prompt</h2>
-                        <button type="button" onclick="copyToClipboard()" id="copyBtn" class="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm px-4 py-2 rounded-lg transition-colors">
-                            <svg id="copyIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
-                            <span id="copyText">Copy to Clipboard</span>
+            <!-- Output -->
+            <div id="outputSection" class="hidden mt-6 fade-in">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-sm font-semibold text-gray-800">Generated Prompt</h2>
+                        <button type="button" id="copyBtn" onclick="copyToClipboard()" class="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 text-gray-600 font-medium text-xs px-3 py-1.5 rounded-md transition-colors cursor-pointer">
+                            <svg id="copyIcon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+                            <span id="copyText">Copy</span>
                         </button>
                     </div>
-                    <textarea id="outputPrompt" readonly rows="18" class="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-mono leading-relaxed text-slate-700 resize-y focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"></textarea>
+                    <textarea id="outputPrompt" readonly rows="14" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm font-mono leading-relaxed text-gray-700 resize-y focus:ring-1 focus:ring-blue-400 outline-none"></textarea>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm text-slate-500">&copy; 2026 CS Professor Teaching Tools. All rights reserved.</p>
+    <footer class="bg-white border-t border-gray-200 py-5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+            <p class="text-xs text-gray-400">&copy; 2026 CS Professor Teaching Tools</p>
         </div>
     </footer>
 
     <script>
         function generatePrompt() {
-            const studentName = document.getElementById('studentName').value.trim();
-            const submissionType = document.getElementById('submissionType').value;
-            const courseName = document.getElementById('courseName').value.trim();
-            const assignmentTopic = document.getElementById('assignmentTopic').value.trim();
-            const studentWork = document.getElementById('studentWork').value.trim();
-            const rubric = document.getElementById('rubric').value.trim();
+            const fields = {
+                studentName: document.getElementById('studentName'),
+                submissionType: document.getElementById('submissionType'),
+                courseName: document.getElementById('courseName'),
+                assignmentTopic: document.getElementById('assignmentTopic'),
+                studentWork: document.getElementById('studentWork')
+            };
 
-            // Validate required fields
-            if (!studentName || !submissionType || !courseName || !assignmentTopic || !studentWork) {
-                alert('Please fill in all required fields.');
-                return;
+            // Clear previous errors
+            document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+
+            let hasError = false;
+            for (const [key, el] of Object.entries(fields)) {
+                if (!el.value.trim()) {
+                    el.classList.add('field-error');
+                    hasError = true;
+                }
             }
+            if (hasError) return;
 
-            const rubricText = rubric
-                ? rubric
-                : 'No rubric provided — assess based on correctness, completeness, clarity, code quality, and adherence to instructions';
+            const rubric = document.getElementById('rubric').value.trim();
+            const rubricText = rubric || 'No rubric provided - assess based on correctness, completeness, clarity, code quality, and adherence to instructions';
 
             const prompt = `Please review and grade the following student submission:
 
-Student: ${studentName}
-Course: ${courseName}
-Assignment: ${assignmentTopic}
-Submission Type: ${submissionType}
+Student: ${fields.studentName.value.trim()}
+Course: ${fields.courseName.value.trim()}
+Assignment: ${fields.assignmentTopic.value.trim()}
+Submission Type: ${fields.submissionType.value}
 
 Rubric:
 ${rubricText}
 
 Student Submission:
-${studentWork}
+${fields.studentWork.value.trim()}
 
 Please provide: overall score, rubric-based breakdown, strengths, areas for improvement, and an encouraging closing remark.`;
 
             document.getElementById('outputPrompt').value = prompt;
-            const outputSection = document.getElementById('outputSection');
-            outputSection.classList.remove('hidden');
-            outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const section = document.getElementById('outputSection');
+            section.classList.remove('hidden');
+            section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function copyToClipboard() {
-            const output = document.getElementById('outputPrompt');
-            navigator.clipboard.writeText(output.value).then(() => {
-                const btn = document.getElementById('copyBtn');
-                const textEl = document.getElementById('copyText');
-                const iconEl = document.getElementById('copyIcon');
+            const text = document.getElementById('outputPrompt').value;
+            const btn = document.getElementById('copyBtn');
+            const textEl = document.getElementById('copyText');
+
+            navigator.clipboard.writeText(text).then(() => {
                 textEl.textContent = 'Copied!';
-                btn.classList.add('!bg-green-100', '!text-green-700');
-                iconEl.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>';
+                btn.classList.add('bg-green-100', 'text-green-700');
+                btn.classList.remove('bg-gray-100', 'text-gray-600');
                 setTimeout(() => {
-                    textEl.textContent = 'Copy to Clipboard';
-                    btn.classList.remove('!bg-green-100', '!text-green-700');
-                    iconEl.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/>';
+                    textEl.textContent = 'Copy';
+                    btn.classList.remove('bg-green-100', 'text-green-700');
+                    btn.classList.add('bg-gray-100', 'text-gray-600');
                 }, 2000);
+            }).catch(() => {
+                // Fallback
+                const ta = document.getElementById('outputPrompt');
+                ta.select();
+                document.execCommand('copy');
+                textEl.textContent = 'Copied!';
+                setTimeout(() => { textEl.textContent = 'Copy'; }, 2000);
             });
         }
+
+        // Clear error highlight on input
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('input', () => el.classList.remove('field-error'));
+        });
     </script>
 </body>
 </html>
